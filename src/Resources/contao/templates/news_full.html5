@@ -1,0 +1,31 @@
+<article class="layout_full block<?= $this->class; ?>">
+	<header class="news_topline">
+		<h2><?php echo $this->newsHeadline; ?></h2>
+		<?php if ($this->teaser): ?>
+			<div class="hidden" itemprop="description"><?= $this->teaser; ?></div>
+		<?php endif; ?>
+		
+		<div class="infobar" role="contentinfo">
+			<div class="comment-count pull-left">
+				<a href="<?= $this->link; ?>#comments-block">
+					<?= $this->numberOfComments; ?>
+				</a>					
+			</div>
+			<div class="category-name pull-left" itemprop="articleSection"><?= $this->categoryName; ?></div>
+			<?php $dateTimeObject = $this->dateTimeObject; /* @var \DateTime $dateTimeObject */ ?>
+			<div class="date pull-left"><time itemprop="datePublished" title="<?= $this->date; ?>" datetime="<?= $this->datetime; ?>"><?= $dateTimeObject->format('d.m.Y'); ?></time></div>
+			<div class="clearfix"></div>
+		</div>
+	</header>
+	<section class="news_content" itemprop="articleBody">
+		<?= $this->text; ?>
+		<div class="clear"></div>
+	</section>
+	<footer class="news_bottom">
+		<div id="socialshareprivacy"></div>
+		<?php // enable or disable relatedNews in the configuration ?>
+		<?php // $this->relatedNews; ?>
+		<?php // enable or disable authorbox in the configuration ?>
+		<?php //echo $this->authorbox; ?>
+	</footer>
+</article>

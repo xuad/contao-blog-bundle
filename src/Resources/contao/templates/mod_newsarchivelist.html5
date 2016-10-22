@@ -1,0 +1,20 @@
+<!-- indexer::stop -->
+<div class="<?php echo $this->class; ?> block">
+	<?php if($this->existsCategories) : ?>
+		<?php if($this->headline): ?>
+			<<?php echo $this->hl; ?>><?php echo $this->headline; ?></<?php echo $this->hl; ?>>
+		<?php endif; ?>
+		<nav class="mod_navigation block">
+			<ul>
+				<?php foreach($this->categories as $category): ?>
+					<?php if($category["isActive"]): ?>
+						<li class="news-list compressed active"><a href="<?php echo $category["link"] ?>" title="<?php echo $category["name"] ?>"><?php echo $category["name"] ?><span class="article-count"> (<?php echo $category["count"] ?>)</span></a></li>
+					<?php else: ?>
+						<li class="news-list compressed"><a href="<?php echo $category["link"] ?>" title="<?php echo $category["name"] ?>"><?php echo $category["name"] ?><span class="article-count"> (<?php echo $category["count"] ?>)</span></a></li>
+						<?php endif; ?>
+					<?php endforeach; ?>
+			</ul>
+		</nav>
+	<?php endif; ?>
+</div>
+<!-- indexer::continue -->

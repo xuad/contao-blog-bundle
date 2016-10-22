@@ -1,0 +1,12 @@
+<!-- indexer::stop -->
+<div id="tags" itemprop="keywords">
+	<span id="tag-label"><?php echo $this->tagsLabel; ?></span>
+	<nav class="mod_navigation block">
+		<ul>
+			<?php foreach($this->tags as $key => $tag): ?>
+			<li><a href="<?php echo $tag["link"] ?>" title="<?php echo $tag["name"] ?>"><?php echo $tag["name"] ?></a><?php if($key < count($this->tags) - 1): ?><span class="delimiter">,</span><?php endif;?></li>
+			<?php endforeach; ?>
+		</ul>
+	</nav>
+</div>
+<!-- indexer::continue -->

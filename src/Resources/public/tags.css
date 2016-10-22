@@ -1,0 +1,39 @@
+ul.tagit {
+	border: 1px solid #AAAAAA;
+    border-radius: 3px;
+    padding: 2px 3px;
+	min-height: 53px;
+	width: 663px;
+}
+ul.tagit li {
+	border-radius: 3px;
+}
+
+ul.tagit .tagit-label {
+	color: inherit;
+}
+
+ul.tagit li.tagit-choice {
+	color: #fff;
+}
+
+ul.tagit li.tagit-choice a.tagit-close {
+	padding: 1px 0 2px 3px;
+}
+
+#tag-cloud li {
+	float:left;
+	margin-right: 5px;
+}
+
+#tag-cloud li a {
+	padding-right: 5px;
+}
+
+#tag-cloud ul:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
