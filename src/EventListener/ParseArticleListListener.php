@@ -18,8 +18,6 @@ class ParseArticleListListener extends \Frontend
      * @param FrontendTemplate $objTemplate
      * @param array $objArticle
      * @param ModuleNews $moduleNews
-     *
-     * @property-read \stdClass $frontendTemplate
      */
     public function onParseArticles(FrontendTemplate $objTemplate, array $objArticle, ModuleNews $moduleNews)
     {
