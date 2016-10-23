@@ -1,0 +1,5 @@
+services:
+  xuad_blog_extension.listener.parse_article_list:
+    class: Xuad\BlogBundle\EventListener\ParseArticleListListener
+    arguments:
+    - "@contao.framework"
