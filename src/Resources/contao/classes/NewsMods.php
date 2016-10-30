@@ -49,34 +49,34 @@ class NewsMods extends \Frontend
 		// Get category name
 		$objTemplate->categoryName = $this->getCategoryNameByID($objArticle["pid"]);
 
-		$dateTimeStamp = 0;
-		$dateTimeObject = null;
-
-		if(isset($objTemplate->datetime) && !empty($objTemplate->datetime))
-		{
-			$dateTimeStamp = date_timestamp_get(new \DateTime($objTemplate->datetime));
-			$dateTimeObject = new \DateTime($objTemplate->datetime);
-		}
-
-		// Complete dateTime object
-		$objTemplate->dateTimeObject = $dateTimeObject;
-
-		// Time in seperate vars
-		$objTemplate->dateMonth = $GLOBALS['TL_LANG']['MONTHS'][date('n',
-						$dateTimeStamp) - 1];
-		$objTemplate->dateDay = date('d', $dateTimeStamp);
-		$objTemplate->dateYear = date('Y', $dateTimeStamp);
-
-		// Automatic lightbox
-		$objTemplate->text = $this->addAutomaticLightbox($objTemplate->id,
-				$objTemplate->text);
-
-		$formattedDateTimeArray = array(
-			'dayShort' => $GLOBALS['TL_LANG']['DAYS_SHORT'][date('w', $intStart) - 1],
-			'day' =>  date('d', $dateTimeStamp),
-			'month' =>  date('m', $dateTimeStamp),
-			'year' => date('Y', $dateTimeStamp),
-		);
+//		$dateTimeStamp = 0;
+//		$dateTimeObject = null;
+//
+//		if(isset($objTemplate->datetime) && !empty($objTemplate->datetime))
+//		{
+//			$dateTimeStamp = date_timestamp_get(new \DateTime($objTemplate->datetime));
+//			$dateTimeObject = new \DateTime($objTemplate->datetime);
+//		}
+//
+//		// Complete dateTime object
+//		$objTemplate->dateTimeObject = $dateTimeObject;
+//
+//		// Time in seperate vars
+//		$objTemplate->dateMonth = $GLOBALS['TL_LANG']['MONTHS'][date('n',
+//						$dateTimeStamp) - 1];
+//		$objTemplate->dateDay = date('d', $dateTimeStamp);
+//		$objTemplate->dateYear = date('Y', $dateTimeStamp);
+//
+//		// Automatic lightbox
+//		$objTemplate->text = $this->addAutomaticLightbox($objTemplate->id,
+//				$objTemplate->text);
+//
+//		$formattedDateTimeArray = array(
+//			'dayShort' => $GLOBALS['TL_LANG']['DAYS_SHORT'][date('w', $intStart) - 1],
+//			'day' =>  date('d', $dateTimeStamp),
+//			'month' =>  date('m', $dateTimeStamp),
+//			'year' => date('Y', $dateTimeStamp),
+//		);
 
 		// Set formatted dates
 		$objTemplate->formattedDateTimeArray = $formattedDateTimeArray;

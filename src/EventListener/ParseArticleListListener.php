@@ -6,7 +6,7 @@ use Contao\FrontendTemplate;
 use Contao\ModuleNews;
 
 /**
- * Description of class
+ * Hook to manipulate news list
  *
  * @author Patrick Mosch <https://xuad.net>
  */
