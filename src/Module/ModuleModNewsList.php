@@ -17,7 +17,5 @@ class ModuleModNewsList extends ModuleNewsList
     protected function compile()
     {
         parent::compile();
-
-        $stop = "";
     }
 }

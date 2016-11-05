@@ -1,0 +1,9 @@
+services:
+  xuad_blog_extension.repository.news_archive_repository:
+    class: Xuad\BlogBundle\Repository\NewsArchiveRepository
+  xuad_blog_extension.service.news_archive_service:
+    class: Xuad\BlogBundle\Service\NewsArchiveService
+    arguments:
+      - "@contao.framework"
+      - "@xuad_blog_extension.repository.news_archive_repository"
+      - "@contao.routing.url_generator"
