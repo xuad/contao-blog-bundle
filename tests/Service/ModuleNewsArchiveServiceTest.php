@@ -10,11 +10,11 @@ use Xuad\BlogBundle\Repository\NewsArchiveRepository;
 use Xuad\BlogBundle\Service\ModuleNewsArchiveService;
 
 /**
- * Description of class
+ * ModuleNewsArchiveServiceTest
  *
  * @author Patrick Mosch <https://xuad.net>
  */
-class NewsArchiveServiceTest extends \PHPUnit_Framework_TestCase
+class ModuleNewsArchiveServiceTest extends \PHPUnit_Framework_TestCase
 {
     public function testInjectActive()
     {
@@ -34,8 +34,7 @@ class NewsArchiveServiceTest extends \PHPUnit_Framework_TestCase
         $activeId = 1;
         $newsArchiveModel = new NewsArchiveModel();
         $newsArchiveModel
-            ->setId($activeId)
-            ->setActive(true);
+            ->setId($activeId);
 
         $newsArchiveService = new ModuleNewsArchiveService(
             $this->mockContaoFramework(),
@@ -44,7 +43,9 @@ class NewsArchiveServiceTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertEquals(true, $newsArchiveService->injectActive([$newsArchiveModel], $activeId)[0]->isActive());
-//        $this->assertEquals(false, $newsArchiveService->injectActive([$newsArchiveModel], 123123123)[0]->isActive());
+
+        $newsArchiveModel->setActive(false);
+        $this->assertEquals(false, $newsArchiveService->injectActive([$newsArchiveModel], 1337)[0]->isActive());
     }
 
     /**
