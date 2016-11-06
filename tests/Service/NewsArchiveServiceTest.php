@@ -7,7 +7,7 @@ use Contao\CoreBundle\Framework\ContaoFrameworkInterface;
 use Contao\CoreBundle\Routing\UrlGenerator;
 use Xuad\BlogBundle\Model\NewsArchiveModel;
 use Xuad\BlogBundle\Repository\NewsArchiveRepository;
-use Xuad\BlogBundle\Service\NewsArchiveService;
+use Xuad\BlogBundle\Service\ModuleNewsArchiveService;
 
 /**
  * Description of class
@@ -37,7 +37,7 @@ class NewsArchiveServiceTest extends \PHPUnit_Framework_TestCase
             ->setId($activeId)
             ->setActive(true);
 
-        $newsArchiveService = new NewsArchiveService(
+        $newsArchiveService = new ModuleNewsArchiveService(
             $this->mockContaoFramework(),
             $newsArchiveRepository,
             $urlGenerator

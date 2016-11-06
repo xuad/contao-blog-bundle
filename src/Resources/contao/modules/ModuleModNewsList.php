@@ -2,20 +2,20 @@
 
 /**
  * xuad.net blog system
- * 
- * @package   xuad_blog 
- * @author    Patrick Mosch 
- * @license   LGPL 
- * @copyright Patrick Mosch 
+ *
+ * @package   xuad_blog
+ * @author    Patrick Mosch
+ * @license   LGPL
+ * @copyright Patrick Mosch
  */
 
 namespace xuad_blog;
 
 /**
- * Class ModuleModNewsList 
+ * Class ModuleModNewsList
  *
- * @copyright  Patrick Mosch 
- * @author     Patrick Mosch 
+ * @copyright  Patrick Mosch
+ * @author     Patrick Mosch
  * @package    xuad_blog
  */
 class ModuleModNewsList extends \Contao\ModuleNewsList
@@ -34,7 +34,7 @@ class ModuleModNewsList extends \Contao\ModuleNewsList
 
 	/**
 	 * Initialisize object
-	 * 
+	 *
 	 * @param type $objModule
 	 * @param type $strColumn+
 	 */
@@ -62,8 +62,8 @@ class ModuleModNewsList extends \Contao\ModuleNewsList
 	{
 		parent::compile();
 
-		// Override compile with tag param
-		// Set automatic pagetitle
+        // Override compile with tag param
+        // Set automatic pagetitle
 		if($this->automaticPageTitle)
 		{
 			// Get pagination page id
@@ -83,7 +83,7 @@ class ModuleModNewsList extends \Contao\ModuleNewsList
 				Helper::appendPageNumberToMetaDescription($paginationId, $this->categoryName);
 			}
 		}
-		
+
 		// Sort by tag
 		if(\Input::get("tags"))
 		{
@@ -191,8 +191,8 @@ class ModuleModNewsList extends \Contao\ModuleNewsList
 
 	/**
 	 * Check exists archiv category id
-	 * 
-	 * @param int $id 
+	 *
+	 * @param int $id
 	 * @return boolean
 	 */
 	protected function checkExistsArchiveID($id)

@@ -2,10 +2,13 @@
 
 namespace Xuad\BlogBundle\Module;
 
+use Contao\Input;
 use Contao\ModuleModel;
 use Contao\ModuleNews;
 use Contao\PageModel;
-use Xuad\BlogBundle\Service\NewsArchiveService;
+use Contao\System;
+use Xuad\BlogBundle\Service\Entity\NewsArchiveEntityService;
+use Xuad\BlogBundle\Service\ModuleNewsArchiveService;
 
 /**
  * Description of class
@@ -22,9 +25,14 @@ class ModuleNewsArchiveList extends ModuleNews
     protected $strTemplate = 'mod_newsarchivelist';
 
     /**
-     * @var NewsArchiveService
+     * @var ModuleNewsArchiveService
      */
-    private $newsArchiveService;
+    private $moduleNewsArchiveService;
+
+    /**
+     * @var NewsArchiveEntityService
+     */
+    private $newsArchiveEntityService;
 
     /**
      * ModuleNewsArchiveList constructor.
@@ -36,7 +44,10 @@ class ModuleNewsArchiveList extends ModuleNews
     {
         parent::__construct($objModule, $strColumn);
 
-        $this->newsArchiveService = \System::getContainer()->get('xuad_blog_extension.service.news_archive_service');
+        $this->moduleNewsArchiveService =
+            System::getContainer()->get('xuad_blog_extension.service.module_news_archive_service');
+        $this->newsArchiveEntityService =
+            System::getContainer()->get('xuad_blog_extension.service.entity.news_archive_entity_service');
     }
 
     /**
@@ -46,22 +57,22 @@ class ModuleNewsArchiveList extends ModuleNews
     {
         /** @var object $this */
 
-        $newsArchiveModelList = $this->newsArchiveService->findNewsArchiveModelList();
-        $archiveIdList = $this->newsArchiveService->getNewsArchiveIdListByNewsArchiveModelList($newsArchiveModelList);
+        $newsArchiveModelList = $this->moduleNewsArchiveService->findNewsArchiveModelList();
+        $archiveIdList = $this->moduleNewsArchiveService->getNewsArchiveIdListByNewsArchiveModelList($newsArchiveModelList);
         $publicIdList = $this->sortOutProtected(deserialize($archiveIdList));
-        $newsArchiveModelList = $this->newsArchiveService
+        $newsArchiveModelList = $this->moduleNewsArchiveService
             ->getFilteredNewsArchiveModelListByIdList($newsArchiveModelList, $publicIdList);
 
         // TODO PM: save and load from db
         $parameterName = 'kategorie';
 
         $pageModelDetails = PageModel::findWithDetails($this->jumpTo);
-        $newsArchiveModelList = $this->newsArchiveService
+        $newsArchiveModelList = $this->moduleNewsArchiveService
             ->injectUrl($newsArchiveModelList, $pageModelDetails->alias, $parameterName);
 
-        $newsArchiveModelList = $this->newsArchiveService
-            ->injectActive($newsArchiveModelList, $this->Input->get($parameterName, true));
-        //            ->injectActive($newsArchiveModelList, 10);
+        $newsArchiveId = $this->newsArchiveEntityService->getNewsArchiveIdByAlias(Input::get($parameterName));
+        $newsArchiveModelList = $this->moduleNewsArchiveService
+            ->injectActive($newsArchiveModelList, $newsArchiveId);
 
         $this->Template->newsArchiveModelList = $newsArchiveModelList;
     }

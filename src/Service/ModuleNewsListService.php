@@ -5,11 +5,11 @@ namespace Xuad\BlogBundle\Service;
 use Xuad\BlogBundle\Repository\NewsArchiveRepository;
 
 /**
- * ParseArticleListService
+ * ModuleNewsListService
  *
  * @author Patrick Mosch <https://xuad.net>
  */
-class ParseArticleListService
+class ModuleNewsListService
 {
     /**
      * @var NewsArchiveRepository
@@ -28,23 +28,22 @@ class ParseArticleListService
     }
 
     /**
-     * Get archive name by id
+     * Get archive id by alias
      *
-     * @param $id
+     * @param string $alias
      *
-     * @return string
+     * @return int
      */
-    public function getArchiveNameById($id)
+    public function getNewsArchiveIdByAlias(string $alias):int
     {
-        $name = '';
+        $id = null;
+        $newsArchive = $this->newsArchiveRepository->getByAlias($alias);
 
-        /** @var object $contaoNewsArchiveModel */
-        $contaoNewsArchiveModel = $this->newsArchiveRepository->getById($id);
-        if($contaoNewsArchiveModel !== null)
+        if($newsArchive !== null)
         {
-            $name = $contaoNewsArchiveModel->title;
+            $id = $newsArchive->id;
         }
 
-        return $name;
+        return $id;
     }
 }

@@ -8,11 +8,11 @@ use Xuad\BlogBundle\Model\NewsArchiveModel;
 use Xuad\BlogBundle\Repository\NewsArchiveRepository;
 
 /**
- * Description of class
+ * ModuleNewsArchiveService
  *
  * @author Patrick Mosch <https://xuad.net>
  */
-class NewsArchiveService
+class ModuleNewsArchiveService
 {
     /**
      * @var ContaoFrameworkInterface

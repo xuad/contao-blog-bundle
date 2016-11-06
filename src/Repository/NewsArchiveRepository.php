@@ -46,8 +46,20 @@ class NewsArchiveRepository
      *
      * @return NewsArchiveModel|null
      */
-    public function getOneById($id)
+    public function getById(int $id)
     {
         return NewsArchiveModel::findById($id);
+    }
+
+    /**
+     * Get by alias
+     *
+     * @param $alias
+     *
+     * @return NewsArchiveModel|null
+     */
+    public function getByAlias(string $alias)
+    {
+        return NewsArchiveModel::findByIdOrAlias($alias);
     }
 }

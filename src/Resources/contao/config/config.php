@@ -3,7 +3,7 @@
 // Modules
 
 // Modified news list
-$GLOBALS['FE_MOD']['news']['newslist'] = 'Xuad\\BlogBundle\\Module\\ModuleModNewsList';
+$GLOBALS['FE_MOD']['news']['newslist'] = 'Xuad\\BlogBundle\\Module\\ModuleNewsList';
 
 
 // Hooks
@@ -22,14 +22,6 @@ $GLOBALS['FE_MOD']['news']['ModuleNewsArchiveList'] = 'Xuad\BlogBundle\Module\Mo
 // * @license   LGPL
 // * @copyright Patrick Mosch
 // */
-///**
-// * FRONT END MODULES
-// */
-//// Show Category navigation
-//$GLOBALS['FE_MOD']['news']['ModuleNewsArchiveList'] = 'ModuleNewsArchiveList';
-//
-//
-//
 //// Modified pagetitle and meta description
 //$GLOBALS['FE_MOD']['news']['newsarchive'] = 'ModuleModNewsArchive';
 //
