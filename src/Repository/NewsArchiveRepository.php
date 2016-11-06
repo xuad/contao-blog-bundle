@@ -3,6 +3,7 @@
 namespace Xuad\BlogBundle\Repository;
 
 use Contao\Database;
+use Contao\NewsArchiveModel;
 
 /**
  * Load data for news archive entity
@@ -18,7 +19,6 @@ class NewsArchiveRepository
      */
     public function getArchiveObjectList()
     {
-        // TODO PM: Use ORM like doctrine? -> create contao news doctrine entities
         $query = '
             SELECT
                 na.id AS newsArchiveId,
@@ -37,5 +37,17 @@ class NewsArchiveRepository
         $resultList = Database::getInstance()->prepare($query)->execute(true);
 
         return $resultList;
+    }
+
+    /**
+     * Get one by id
+     *
+     * @param $id
+     *
+     * @return NewsArchiveModel|null
+     */
+    public function getOneById($id)
+    {
+        return NewsArchiveModel::findById($id);
     }
 }

@@ -7,3 +7,7 @@ services:
       - "@contao.framework"
       - "@xuad_blog_extension.repository.news_archive_repository"
       - "@contao.routing.url_generator"
+  xuad_blog_extension.service.parse_article_list_service:
+    class: Xuad\BlogBundle\Service\ParseArticleListService
+    arguments:
+      - "@xuad_blog_extension.repository.news_archive_repository"

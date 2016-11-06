@@ -2,24 +2,40 @@
 
 namespace Xuad\BlogBundle\EventListener;
 
+use Contao\Frontend;
 use Contao\FrontendTemplate;
-use Contao\ModuleNews;
+use Xuad\BlogBundle\Service\ParseArticleListService;
 
 /**
  * Hook to manipulate news list
  *
  * @author Patrick Mosch <https://xuad.net>
  */
-class ParseArticleListListener extends \Frontend
+class ParseArticleListListener extends Frontend
 {
+    /**
+     * @var ParseArticleListService
+     */
+    private $parseArticleListService;
+
+    /**
+     * ParseArticleListListener constructor.
+     *
+     * @param ParseArticleListService $parseArticleListService
+     */
+    public function __construct(
+        ParseArticleListService $parseArticleListService)
+    {
+        $this->parseArticleListService = $parseArticleListService;
+        parent::__construct();
+    }
+
     /**
      * On parse articles
      *
      * @param FrontendTemplate $objTemplate
-     * @param array $objArticle
-     * @param ModuleNews $moduleNews
      */
-    public function onParseArticles(FrontendTemplate $objTemplate, array $objArticle, ModuleNews $moduleNews)
+    public function onParseArticles(FrontendTemplate $objTemplate)
     {
         /** @var FrontendTemplate|object $objTemplate */
 
@@ -33,5 +49,6 @@ class ParseArticleListListener extends \Frontend
         $objTemplate->dateMonth = $GLOBALS['TL_LANG']['MONTHS'][$dateTimeObject->format('n') - 1];
         $objTemplate->dateDay = $dateTimeObject->format('d');
         $objTemplate->dateYear = $dateTimeObject->format('Y');
+        $objTemplate->archiveName = $this->parseArticleListService->getArchiveNameById($objTemplate->pid);
     }
 }

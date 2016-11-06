@@ -61,8 +61,8 @@ class ModuleNewsArchiveList extends ModuleNews
 
         $newsArchiveModelList = $this->newsArchiveService
             ->injectActive($newsArchiveModelList, $this->Input->get($parameterName, true));
+        //            ->injectActive($newsArchiveModelList, 10);
 
-//        $this->Template->class = $this->class[1];
         $this->Template->newsArchiveModelList = $newsArchiveModelList;
     }
 }
