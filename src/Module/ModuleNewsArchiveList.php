@@ -70,7 +70,11 @@ class ModuleNewsArchiveList extends ModuleNews
         $newsArchiveModelList = $this->moduleNewsArchiveService
             ->injectUrl($newsArchiveModelList, $pageModelDetails->alias, $parameterName);
 
-        $newsArchiveId = $this->newsArchiveEntityService->getNewsArchiveIdByAlias(Input::get($parameterName));
+        $newsArchiveId = null;
+        if(Input::get($parameterName) !== null)
+        {
+            $newsArchiveId = $this->newsArchiveEntityService->getNewsArchiveIdByAlias(Input::get($parameterName));
+        }
         $newsArchiveModelList = $this->moduleNewsArchiveService
             ->injectActive($newsArchiveModelList, $newsArchiveId);
 

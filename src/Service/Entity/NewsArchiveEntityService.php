@@ -36,6 +36,11 @@ class NewsArchiveEntityService
      */
     public function getNewsArchiveIdByAlias(string $alias):int
     {
+        if(!$alias)
+        {
+            return null;
+        }
+
         $id = null;
         $newsArchive = $this->newsArchiveRepository->getByAlias($alias);
 
