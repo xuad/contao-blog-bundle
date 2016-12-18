@@ -50,5 +50,8 @@ class ParseArticleListListener extends Frontend
         $objTemplate->dateDay = $dateTimeObject->format('d');
         $objTemplate->dateYear = $dateTimeObject->format('Y');
         $objTemplate->archiveName = $this->parseArticleListService->getArchiveNameById($objTemplate->pid);
+
+        // Automatic light box
+        $objTemplate->text = $this->parseArticleListService->replaceWithAutomaticLightBox($objTemplate->id, $objTemplate->text);
     }
 }

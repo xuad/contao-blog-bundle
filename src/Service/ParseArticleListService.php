@@ -34,7 +34,7 @@ class ParseArticleListService
      *
      * @return string
      */
-    public function getArchiveNameById($id)
+    public function getArchiveNameById($id): string
     {
         $name = '';
 
@@ -46,5 +46,23 @@ class ParseArticleListService
         }
 
         return $name;
+    }
+
+    /**
+     * Parse news text and add automatic images light box
+     *
+     * @param int $id
+     * @param string $text
+     *
+     * @return mixed|string
+     */
+    public function replaceWithAutomaticLightBox(int $id, string $text): string
+    {
+        $pattern = "/(<a(?![^>]*?data-lightbox=['\"]multi.*)[^>]*?href=['\"][^'\"]+?\.(?:bmp|gif|jpg|jpeg|png)\?{0,1}\S{0,}['\"][^\>]*)>/i";
+        $replacement = '$1 data-lightbox="multi[' . $id . ']">';
+
+        $text = preg_replace($pattern, $replacement, $text);
+
+        return $text;
     }
 }
