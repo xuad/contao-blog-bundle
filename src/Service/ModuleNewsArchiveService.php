@@ -51,7 +51,7 @@ class ModuleNewsArchiveService
      *
      * @return NewsArchiveModel[]
      */
-    public function findNewsArchiveModelList():array
+    public function findNewsArchiveModelList(): array
     {
         /** @var object $newsArchiveDataList */
         $newsArchiveDataList = $this->newsArchiveRepository->getArchiveObjectList();
@@ -79,7 +79,7 @@ class ModuleNewsArchiveService
      *
      * @return array
      */
-    public function getNewsArchiveIdListByNewsArchiveModelList(array $newsArchiveModelList):array
+    public function getNewsArchiveIdListByNewsArchiveModelList(array $newsArchiveModelList): array
     {
         $idList = [];
         foreach($newsArchiveModelList as $newsArchiveModel)
@@ -98,7 +98,7 @@ class ModuleNewsArchiveService
      *
      * @return NewsArchiveModel[]
      */
-    public function getFilteredNewsArchiveModelListByIdList(array $newsArchiveModelList, array $idList):array
+    public function getFilteredNewsArchiveModelListByIdList(array $newsArchiveModelList, array $idList): array
     {
         foreach($newsArchiveModelList as $key => $newsArchiveModel)
         {
@@ -120,7 +120,7 @@ class ModuleNewsArchiveService
      *
      * @return NewsArchiveModel[]
      */
-    public function injectUrl(array $newsArchiveModelList, string $pageAlias, string $parameterName):array
+    public function injectUrl(array $newsArchiveModelList, string $pageAlias, string $parameterName): array
     {
         foreach($newsArchiveModelList as $newsArchiveModel)
         {
@@ -142,7 +142,7 @@ class ModuleNewsArchiveService
      *
      * @return NewsArchiveModel[]
      */
-    public function injectActive(array $newsArchiveModelList, $currentArchiveId):array
+    public function injectActive(array $newsArchiveModelList, $currentArchiveId): array
     {
         foreach($newsArchiveModelList as $newsArchiveModel)
         {

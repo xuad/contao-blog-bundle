@@ -21,7 +21,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['sortNewsList'] = [
     'sql' => "char(1) NOT NULL default ''"
 ];
 
-// Checkbox activate automatic pagetitles
+// Checkbox activate automatic page titles
 $GLOBALS['TL_DCA']['tl_module']['fields']['automaticPageTitle'] = [
     'label' => &$GLOBALS['TL_LANG']['tl_module']['automaticPageTitle'],
     'exclude' => true,
@@ -30,7 +30,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['automaticPageTitle'] = [
     'eval' => ['tl_class' => 'w50']
 ];
 
-// Add pagenumber to title
+// Add page number to title
 $GLOBALS['TL_DCA']['tl_module']['fields']['addPageNumber'] = [
     'label' => &$GLOBALS['TL_LANG']['tl_module']['addPageNumber'],
     'exclude' => true,

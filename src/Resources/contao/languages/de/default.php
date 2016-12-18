@@ -17,7 +17,4 @@
  */
 $GLOBALS['TL_LANG']['MSC']['more'] = 'Weiterlesen...';
 $GLOBALS['TL_LANG']['MSC']['automatic_page_title']['page_and_number'] = 'Seite %s';
-$GLOBALS['TL_LANG']['MSC']['about_headline'] = "Über den Autor";
-$GLOBALS['TL_LANG']['MSC']['tags_label'] = "Tags: ";
-$GLOBALS['TL_LANG']['MSC']['related_news_label'] = "Das könnte Dich auch interessieren:";
 $GLOBALS['TL_LANG']['MSC']['commentCount'] = '%s Kommentare';

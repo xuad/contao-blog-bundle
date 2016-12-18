@@ -46,7 +46,7 @@ class NewsArchiveRepository
      *
      * @return NewsArchiveModel|null
      */
-    public function getById(int $id)
+    public function getById(int $id): NewsArchiveModel
     {
         return NewsArchiveModel::findById($id);
     }
@@ -58,8 +58,28 @@ class NewsArchiveRepository
      *
      * @return NewsArchiveModel|null
      */
-    public function getByAlias(string $alias)
+    public function getByAlias(string $alias): NewsArchiveModel
     {
         return NewsArchiveModel::findByIdOrAlias($alias);
+    }
+
+    /**
+     * Get id list by alias
+     *
+     * @param string $alias
+     *
+     * @return Database\Result|object
+     */
+    public function getListByAlias(string $alias)
+    {
+        $query = 'SELECT
+                    id
+                  FROM
+                    tl_news_archive
+                  WHERE alias=?';
+
+        $resultList = Database::getInstance()->prepare($query)->execute($alias);
+
+        return $resultList;
     }
 }

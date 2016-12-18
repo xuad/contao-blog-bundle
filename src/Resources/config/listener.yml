@@ -3,3 +3,7 @@ services:
     class: Xuad\BlogBundle\EventListener\ParseArticleListListener
     arguments:
     - "@xuad_blog_extension.service.parse_article_list_service"
+  xuad_blog_extension.listener.news_archive:
+    class: Xuad\BlogBundle\EventListener\NewsArchiveListener
+    arguments:
+    - "@xuad_blog_extension.service.news_archive_backend_service"

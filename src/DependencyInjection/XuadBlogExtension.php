@@ -29,5 +29,6 @@ class XuadBlogExtension extends Extension
 
         $loader->load('services.yml');
         $loader->load('listener.yml');
+//        $loader->load('config.yml');
     }
 }

@@ -15,6 +15,10 @@ services:
     class: Xuad\BlogBundle\Service\ModuleNewsListService
     arguments:
       - "@xuad_blog_extension.repository.news_archive_repository"
+  xuad_blog_extension.service.news_archive_backend_service:
+    class: Xuad\BlogBundle\Service\NewsArchiveBackendService
+    arguments:
+      - "@xuad_blog_extension.repository.news_archive_repository"
 
 # Entity service
   xuad_blog_extension.service.entity.news_archive_entity_service:

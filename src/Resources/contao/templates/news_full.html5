@@ -11,7 +11,7 @@
 					<?= $this->numberOfComments; ?>
 				</a>					
 			</div>
-			<div class="category-name pull-left" itemprop="articleSection"><?= $this->categoryName; ?></div>
+			<div class="category-name pull-left" itemprop="articleSection"><?= $this->archiveName; ?></div>
 			<?php $dateTimeObject = $this->dateTimeObject; /* @var \DateTime $dateTimeObject */ ?>
 			<div class="date pull-left"><time itemprop="datePublished" title="<?= $this->date; ?>" datetime="<?= $this->datetime; ?>"><?= $dateTimeObject->format('d.m.Y'); ?></time></div>
 			<div class="clearfix"></div>
@@ -23,9 +23,5 @@
 	</section>
 	<footer class="news_bottom">
 		<div id="socialshareprivacy"></div>
-		<?php // enable or disable relatedNews in the configuration ?>
-		<?php // $this->relatedNews; ?>
-		<?php // enable or disable authorbox in the configuration ?>
-		<?php //echo $this->authorbox; ?>
 	</footer>
 </article>
