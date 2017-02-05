@@ -5,15 +5,13 @@ namespace Xuad\BlogBundle\Service;
 use Xuad\BlogBundle\Repository\NewsArchiveRepository;
 
 /**
- * ParseArticleListService
+ * Class ParseArticleListService
  *
- * @author Patrick Mosch <https://xuad.net>
+ * @package Xuad\BlogBundle\Service
  */
 class ParseArticleListService
 {
-    /**
-     * @var NewsArchiveRepository
-     */
+    /** @var NewsArchiveRepository */
     private $newsArchiveRepository;
 
     /**
@@ -28,8 +26,6 @@ class ParseArticleListService
     }
 
     /**
-     * Get archive name by id
-     *
      * @param $id
      *
      * @return string

@@ -7,15 +7,13 @@ use Contao\FrontendTemplate;
 use Xuad\BlogBundle\Service\ParseArticleListService;
 
 /**
- * Hook to manipulate news list
+ * Class ParseArticleListListener
  *
- * @author Patrick Mosch <https://xuad.net>
+ * @package Xuad\BlogBundle\EventListener
  */
 class ParseArticleListListener extends Frontend
 {
-    /**
-     * @var ParseArticleListService
-     */
+    /** @var ParseArticleListService */
     private $parseArticleListService;
 
     /**
@@ -31,8 +29,6 @@ class ParseArticleListListener extends Frontend
     }
 
     /**
-     * On parse articles
-     *
      * @param FrontendTemplate $objTemplate
      */
     public function onParseArticles(FrontendTemplate $objTemplate)

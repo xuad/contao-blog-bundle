@@ -8,27 +8,42 @@ use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
 /**
- * Inject some services
+ * Class XuadBlogExtension
  *
- * @author Patrick Mosch <https://xuad.net>
+ * @package Xuad\BlogBundle\DependencyInjection
  */
 class XuadBlogExtension extends Extension
 {
+    private $files = [
+        'services.yml',
+        'listener.yml',
+        'parameters.yml'
+    ];
+
     /**
-     * Load services
-     *
-     * @param array $mergedConfig
+     * @param array $configs
      * @param ContainerBuilder $container
      */
-    public function load(array $mergedConfig, ContainerBuilder $container)
+    public function load(array $configs, ContainerBuilder $container)
     {
+        $configuration = new Configuration();
+        $config = $this->processConfiguration($configuration, $configs);
+
         $loader = new YamlFileLoader(
             $container,
             new FileLocator(__DIR__ . '/../Resources/config')
         );
 
-        $loader->load('services.yml');
-        $loader->load('listener.yml');
-//        $loader->load('config.yml');
+        foreach($this->files as $file)
+        {
+            $loader->load($file);
+        }
+
+        if(isset($config['enabled']) && $config['enabled'] === true)
+        {
+            $container->setParameter(
+                'xuad_blog.news_archive_category_parameter_name',
+                $config['news_archive_category_parameter_name']);
+        }
     }
 }

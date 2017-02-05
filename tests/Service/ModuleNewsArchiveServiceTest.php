@@ -5,16 +5,17 @@ namespace Xuad\BlogBundle\Test\DependencyInjection;
 use Contao\CoreBundle\Framework\ContaoFramework;
 use Contao\CoreBundle\Framework\ContaoFrameworkInterface;
 use Contao\CoreBundle\Routing\UrlGenerator;
+use PHPUnit\Framework\TestCase;
 use Xuad\BlogBundle\Model\NewsArchiveModel;
 use Xuad\BlogBundle\Repository\NewsArchiveRepository;
 use Xuad\BlogBundle\Service\ModuleNewsArchiveService;
 
 /**
- * ModuleNewsArchiveServiceTest
+ * Class ModuleNewsArchiveServiceTest
  *
- * @author Patrick Mosch <https://xuad.net>
+ * @package Xuad\BlogBundle\Test\DependencyInjection
  */
-class ModuleNewsArchiveServiceTest extends \PHPUnit_Framework_TestCase
+class ModuleNewsArchiveServiceTest extends TestCase
 {
     public function testInjectActive()
     {
@@ -49,8 +50,6 @@ class ModuleNewsArchiveServiceTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Returns a ContaoFramework instance.
-     *
      * @param bool $noModels
      *
      * @return ContaoFrameworkInterface

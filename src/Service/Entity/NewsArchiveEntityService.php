@@ -11,9 +11,7 @@ use Xuad\BlogBundle\Repository\NewsArchiveRepository;
  */
 class NewsArchiveEntityService
 {
-    /**
-     * @var NewsArchiveRepository
-     */
+    /** @var NewsArchiveRepository */
     private $newsArchiveRepository;
 
     /**
@@ -28,13 +26,11 @@ class NewsArchiveEntityService
     }
 
     /**
-     * Get archive id by alias
-     *
      * @param string $alias
      *
      * @return int
      */
-    public function getNewsArchiveIdByAlias(string $alias):int
+    public function getNewsArchiveIdByAlias(string $alias): int
     {
         if(!$alias)
         {

@@ -1,27 +1,27 @@
 services:
-  xuad_blog_extension.repository.news_archive_repository:
+  xuad_blog.repository.news_archive_repository:
     class: Xuad\BlogBundle\Repository\NewsArchiveRepository
-  xuad_blog_extension.service.module_news_archive_service:
+  xuad_blog.service.module_news_archive_service:
     class: Xuad\BlogBundle\Service\ModuleNewsArchiveService
     arguments:
       - "@contao.framework"
-      - "@xuad_blog_extension.repository.news_archive_repository"
+      - "@xuad_blog.repository.news_archive_repository"
       - "@contao.routing.url_generator"
-  xuad_blog_extension.service.parse_article_list_service:
+  xuad_blog.service.parse_article_list_service:
     class: Xuad\BlogBundle\Service\ParseArticleListService
     arguments:
-      - "@xuad_blog_extension.repository.news_archive_repository"
-  xuad_blog_extension.service.module_news_list_service:
+      - "@xuad_blog.repository.news_archive_repository"
+  xuad_blog.service.module_news_list_service:
     class: Xuad\BlogBundle\Service\ModuleNewsListService
     arguments:
-      - "@xuad_blog_extension.repository.news_archive_repository"
-  xuad_blog_extension.service.news_archive_backend_service:
+      - "@xuad_blog.repository.news_archive_repository"
+  xuad_blog.service.news_archive_backend_service:
     class: Xuad\BlogBundle\Service\NewsArchiveBackendService
     arguments:
-      - "@xuad_blog_extension.repository.news_archive_repository"
+      - "@xuad_blog.repository.news_archive_repository"
 
 # Entity service
-  xuad_blog_extension.service.entity.news_archive_entity_service:
+  xuad_blog.service.entity.news_archive_entity_service:
     class: Xuad\BlogBundle\Service\Entity\NewsArchiveEntityService
     arguments:
-      - "@xuad_blog_extension.repository.news_archive_repository"
+      - "@xuad_blog.repository.news_archive_repository"

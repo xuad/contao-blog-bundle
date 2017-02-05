@@ -11,28 +11,23 @@ use Xuad\BlogBundle\Service\Entity\NewsArchiveEntityService;
 use Xuad\BlogBundle\Service\ModuleNewsArchiveService;
 
 /**
- * Description of class
+ * Class ModuleNewsArchiveList
  *
- * @author Patrick Mosch <https://xuad.net>
+ * @package Xuad\BlogBundle\Module
  */
 class ModuleNewsArchiveList extends ModuleNews
 {
-    /**
-     * Template
-     *
-     * @var string
-     */
+    /** @var string */
     protected $strTemplate = 'mod_newsarchivelist';
 
-    /**
-     * @var ModuleNewsArchiveService
-     */
+    /** @var ModuleNewsArchiveService */
     private $moduleNewsArchiveService;
 
-    /**
-     * @var NewsArchiveEntityService
-     */
+    /** @var NewsArchiveEntityService */
     private $newsArchiveEntityService;
+
+    /** @var string */
+    private $categoryParameterName;
 
     /**
      * ModuleNewsArchiveList constructor.
@@ -45,14 +40,13 @@ class ModuleNewsArchiveList extends ModuleNews
         parent::__construct($objModule, $strColumn);
 
         $this->moduleNewsArchiveService =
-            System::getContainer()->get('xuad_blog_extension.service.module_news_archive_service');
+            System::getContainer()->get('xuad_blog.service.module_news_archive_service');
         $this->newsArchiveEntityService =
-            System::getContainer()->get('xuad_blog_extension.service.entity.news_archive_entity_service');
+            System::getContainer()->get('xuad_blog.service.entity.news_archive_entity_service');
+        $this->categoryParameterName =
+            System::getContainer()->getParameter('xuad_blog.news_archive_category_parameter_name');
     }
 
-    /**
-     * Generate module
-     */
     protected function compile()
     {
         /** @var object $this */
@@ -63,17 +57,14 @@ class ModuleNewsArchiveList extends ModuleNews
         $newsArchiveModelList = $this->moduleNewsArchiveService
             ->getFilteredNewsArchiveModelListByIdList($newsArchiveModelList, $publicIdList);
 
-        // TODO PM: save and load from db
-        $parameterName = 'kategorie';
-
         $pageModelDetails = PageModel::findWithDetails($this->jumpTo);
         $newsArchiveModelList = $this->moduleNewsArchiveService
-            ->injectUrl($newsArchiveModelList, $pageModelDetails->alias, $parameterName);
+            ->injectUrl($newsArchiveModelList, $pageModelDetails->alias, $this->categoryParameterName);
 
         $newsArchiveId = null;
-        if(Input::get($parameterName) !== null)
+        if(Input::get($this->categoryParameterName) !== null)
         {
-            $newsArchiveId = $this->newsArchiveEntityService->getNewsArchiveIdByAlias(Input::get($parameterName));
+            $newsArchiveId = $this->newsArchiveEntityService->getNewsArchiveIdByAlias(Input::get($this->categoryParameterName));
         }
         $newsArchiveModelList = $this->moduleNewsArchiveService
             ->injectActive($newsArchiveModelList, $newsArchiveId);

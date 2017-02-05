@@ -1,9 +1,9 @@
 services:
-  xuad_blog_extension.listener.parse_article_list:
+  xuad_blog.listener.parse_article_list:
     class: Xuad\BlogBundle\EventListener\ParseArticleListListener
     arguments:
-    - "@xuad_blog_extension.service.parse_article_list_service"
-  xuad_blog_extension.listener.news_archive:
+    - "@xuad_blog.service.parse_article_list_service"
+  xuad_blog.listener.news_archive:
     class: Xuad\BlogBundle\EventListener\NewsArchiveListener
     arguments:
-    - "@xuad_blog_extension.service.news_archive_backend_service"
+    - "@xuad_blog.service.news_archive_backend_service"

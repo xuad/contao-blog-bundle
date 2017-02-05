@@ -2,16 +2,17 @@
 
 namespace Xuad\BlogBundle\Test\DependencyInjection;
 
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
 use Xuad\BlogBundle\DependencyInjection\XuadBlogExtension;
 
 /**
- * Description of class
+ * Class XuadBlogExtensionTest
  *
- * @author Patrick Mosch <https://xuad.net>
+ * @package Xuad\BlogBundle\Test\DependencyInjection
  */
-class XuadBlogExtensionTest extends \PHPUnit_Framework_TestCase
+class XuadBlogExtensionTest extends TestCase
 {
     public function testObjectInstantiation()
     {
@@ -27,6 +28,6 @@ class XuadBlogExtensionTest extends \PHPUnit_Framework_TestCase
         $extension = new XuadBlogExtension();
         $extension->load([], $container);
 
-        $this->assertTrue($container->has('xuad_blog_extension.listener.parse_article_list'));
+        $this->assertTrue($container->has('xuad_blog.listener.parse_article_list'));
     }
 }

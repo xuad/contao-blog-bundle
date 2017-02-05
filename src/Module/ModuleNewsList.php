@@ -15,10 +15,11 @@ use Xuad\BlogBundle\Service\ModuleNewsListService;
  */
 class ModuleNewsList extends ContaoModuleNewsList
 {
-    /**
-     * @var ModuleNewsListService
-     */
+    /** @var ModuleNewsListService */
     private $moduleNewsListService;
+
+    /** @var string */
+    private $categoryParameterName;
 
     /**
      * ModuleNewsList constructor.
@@ -31,28 +32,24 @@ class ModuleNewsList extends ContaoModuleNewsList
         parent::__construct($objModule, $strColumn);
 
         $this->moduleNewsListService =
-            System::getContainer()->get('xuad_blog_extension.service.module_news_list_service');
+            System::getContainer()->get('xuad_blog.service.module_news_list_service');
+        $this->categoryParameterName =
+            System::getContainer()->getParameter('xuad_blog.news_archive_category_parameter_name');
 
         $this->filterNewsArchives($objModule);
     }
 
-    /**
-     * Generate module
-     */
     protected function compile()
     {
         parent::compile();
     }
 
     /**
-     * Filter news archives
-     *
      * @param ModuleModel $objModule
      */
     protected function filterNewsArchives(ModuleModel $objModule)
     {
-        // TODO PM: move to db or config!
-        $newsArchiveAlias = Input::get("kategorie");
+        $newsArchiveAlias = Input::get($this->categoryParameterName);
 
         /** @var object $objModule */
         if(!$objModule->sortNewsList || $newsArchiveAlias === null)

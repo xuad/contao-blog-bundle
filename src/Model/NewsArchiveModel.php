@@ -3,44 +3,32 @@
 namespace Xuad\BlogBundle\Model;
 
 /**
- * News archive model
+ * Class NewsArchiveModel
  *
- * @author Patrick Mosch <https://xuad.net>
+ * @package Xuad\BlogBundle\Model
  */
 class NewsArchiveModel
 {
-    /**
-     * @var int
-     */
+    /** @var int */
     private $id;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $title;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $alias;
 
-    /**
-     * @var int
-     */
+    /** @var int */
     private $numberOfNews;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $url;
 
-    /**
-     * @var boolean
-     */
+    /** @var bool */
     private $active = false;
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isActive(): bool
     {

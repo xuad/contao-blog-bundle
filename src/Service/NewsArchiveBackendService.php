@@ -7,15 +7,13 @@ use Contao\StringUtil;
 use Xuad\BlogBundle\Repository\NewsArchiveRepository;
 
 /**
- * NewsArchiveBackendService
+ * Class NewsArchiveBackendService
  *
- * @author Patrick Mosch <https://xuad.net>
+ * @package Xuad\BlogBundle\Service
  */
 class NewsArchiveBackendService
 {
-    /**
-     * @var NewsArchiveRepository
-     */
+    /** @var NewsArchiveRepository */
     private $newsArchiveRepository;
 
     /**
@@ -29,8 +27,6 @@ class NewsArchiveBackendService
     }
 
     /**
-     * Get alias by alias and data container
-     *
      * @param $alias
      * @param DataContainer $dataContainer
      *
@@ -61,8 +57,6 @@ class NewsArchiveBackendService
     }
 
     /**
-     * Get news archive id list by alias
-     *
      * @param string $alias
      *
      * @return array

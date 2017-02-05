@@ -22,11 +22,11 @@ $GLOBALS['TL_DCA']['tl_news_archive']['fields']['alias'] = [
         'maxlength' => 128,
         'tl_class' => 'w50'],
     'save_callback' => [
-        ['xuad_blog_extension.listener.news_archive', 'onSaveArchive']
+        ['xuad_blog.listener.news_archive', 'onSaveArchive']
     ],
     'sql' => "varbinary(128) NOT NULL default ''"
 ];
-//$GLOBALS['TL_HOOKS']['parseArticles'][] = ['xuad_blog_extension.listener.parse_article_list', 'onParseArticles'];
+//$GLOBALS['TL_HOOKS']['parseArticles'][] = ['xuad_blog.listener.parse_article_list', 'onParseArticles'];
 //
 //class tl_news_archive_mod extends Backend
 //{

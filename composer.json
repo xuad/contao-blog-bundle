@@ -1,8 +1,8 @@
 {
   "name": "xuad/contao-blog-bundle",
+  "type": "contao-bundle",
   "description": "Contao-NewsModule as Blog",
   "license": "proprietary",
-  "type": "symfony-bundle",
   "authors": [
     {
       "name": "Patrick Mosch",
@@ -10,9 +10,17 @@
     }
   ],
   "require": {
-    "php": ">=7.0.0",
-    "symfony/framework-bundle": "~2.8|~3.0",
-    "contao/core-bundle": "^4.2.3"
+    "php": ">=7.1.0",
+    "symfony/framework-bundle": "~3.2",
+    "contao/core-bundle": "^4.3.3"
+  },
+  "require-dev": {
+    "contao/manager-plugin": "^2.0",
+    "phpunit/phpunit": "^4.5"
+  },
+  "conflict": {
+    "contao/core": "*",
+    "contao/manager-plugin": "<2.0 || >=3.0"
   },
   "autoload": {
     "psr-4": {
@@ -22,6 +30,7 @@
       "src/Resources/contao"
     ],
     "exclude-from-classmap": [
+      "tests/",
       "src/Resources/contao/config",
       "src/Resources/contao/dca",
       "src/Resources/contao/languages",
@@ -32,5 +41,8 @@
     "psr-4": {
       "Xuad\\BlogBundle\\Test\\": "tests/"
     }
+  },
+  "extra": {
+    "contao-manager-plugin": "Xuad\\BlogBundle\\ContaoManager\\Plugin"
   }
 }

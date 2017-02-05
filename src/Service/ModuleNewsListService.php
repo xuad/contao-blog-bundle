@@ -5,15 +5,13 @@ namespace Xuad\BlogBundle\Service;
 use Xuad\BlogBundle\Repository\NewsArchiveRepository;
 
 /**
- * ModuleNewsListService
+ * Class ModuleNewsListService
  *
- * @author Patrick Mosch <https://xuad.net>
+ * @package Xuad\BlogBundle\Service
  */
 class ModuleNewsListService
 {
-    /**
-     * @var NewsArchiveRepository
-     */
+    /** @var NewsArchiveRepository */
     private $newsArchiveRepository;
 
     /**
@@ -28,13 +26,11 @@ class ModuleNewsListService
     }
 
     /**
-     * Get archive id by alias
-     *
      * @param string $alias
      *
      * @return int
      */
-    public function getNewsArchiveIdByAlias(string $alias):int
+    public function getNewsArchiveIdByAlias(string $alias): int
     {
         $id = null;
         $newsArchive = $this->newsArchiveRepository->getByAlias($alias);

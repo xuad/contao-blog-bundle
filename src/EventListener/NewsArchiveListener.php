@@ -7,15 +7,13 @@ use Contao\DataContainer;
 use Xuad\BlogBundle\Service\NewsArchiveBackendService;
 
 /**
- * NewsArchiveListener
+ * Class NewsArchiveListener
  *
- * @author Patrick Mosch <https://xuad.net>
+ * @package Xuad\BlogBundle\EventListener
  */
 class NewsArchiveListener extends Backend
 {
-    /**
-     * @var NewsArchiveBackendService
-     */
+    /** @var NewsArchiveBackendService */
     private $newsArchiveBackendService;
 
     /**
@@ -32,8 +30,6 @@ class NewsArchiveListener extends Backend
     }
 
     /**
-     * On save archive
-     *
      * @param $value
      * @param DataContainer $dataContainer
      *

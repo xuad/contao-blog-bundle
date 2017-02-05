@@ -8,25 +8,19 @@ use Xuad\BlogBundle\Model\NewsArchiveModel;
 use Xuad\BlogBundle\Repository\NewsArchiveRepository;
 
 /**
- * ModuleNewsArchiveService
+ * Class ModuleNewsArchiveService
  *
- * @author Patrick Mosch <https://xuad.net>
+ * @package Xuad\BlogBundle\Service
  */
 class ModuleNewsArchiveService
 {
-    /**
-     * @var ContaoFrameworkInterface
-     */
+    /** @var ContaoFrameworkInterface */
     private $framework;
 
-    /**
-     * @var NewsArchiveRepository
-     */
+    /** @var NewsArchiveRepository */
     private $newsArchiveRepository;
 
-    /**
-     * @var UrlGenerator
-     */
+    /** @var UrlGenerator */
     private $urlGenerator;
 
     /**
@@ -47,8 +41,6 @@ class ModuleNewsArchiveService
     }
 
     /**
-     * Find news category model list
-     *
      * @return NewsArchiveModel[]
      */
     public function findNewsArchiveModelList(): array
@@ -73,8 +65,6 @@ class ModuleNewsArchiveService
     }
 
     /**
-     * Get news archive id list by news archive model list
-     *
      * @param NewsArchiveModel[] $newsArchiveModelList
      *
      * @return array
@@ -91,8 +81,6 @@ class ModuleNewsArchiveService
     }
 
     /**
-     * Get filtered news archive model list by id list
-     *
      * @param NewsArchiveModel[] $newsArchiveModelList
      * @param array $idList
      *
@@ -112,8 +100,6 @@ class ModuleNewsArchiveService
     }
 
     /**
-     * Inject url
-     *
      * @param NewsArchiveModel[] $newsArchiveModelList
      * @param string $parameterName
      * @param string $pageAlias
@@ -135,8 +121,6 @@ class ModuleNewsArchiveService
     }
 
     /**
-     * Inject active
-     *
      * @param NewsArchiveModel[] $newsArchiveModelList
      * @param $currentArchiveId
      *

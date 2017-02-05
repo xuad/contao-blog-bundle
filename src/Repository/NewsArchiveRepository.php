@@ -6,15 +6,13 @@ use Contao\Database;
 use Contao\NewsArchiveModel;
 
 /**
- * Load data for news archive entity
+ * Class NewsArchiveRepository
  *
- * @author Patrick Mosch <https://xuad.net>
+ * @package Xuad\BlogBundle\Repository
  */
 class NewsArchiveRepository
 {
     /**
-     * Find all data
-     *
      * @return Database\Result
      */
     public function getArchiveObjectList()
@@ -40,8 +38,6 @@ class NewsArchiveRepository
     }
 
     /**
-     * Get one by id
-     *
      * @param $id
      *
      * @return NewsArchiveModel|null
@@ -52,8 +48,6 @@ class NewsArchiveRepository
     }
 
     /**
-     * Get by alias
-     *
      * @param $alias
      *
      * @return NewsArchiveModel|null
@@ -64,8 +58,6 @@ class NewsArchiveRepository
     }
 
     /**
-     * Get id list by alias
-     *
      * @param string $alias
      *
      * @return Database\Result|object
