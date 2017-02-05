@@ -4,8 +4,9 @@
 namespace Xuad\BlogBundle\ContaoManager;
 
 
-use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
 use Contao\ManagerPlugin\Bundle\BundlePluginInterface;
+use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
+use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
 
 class Plugin implements BundlePluginInterface
 {
@@ -17,9 +18,9 @@ class Plugin implements BundlePluginInterface
     public function getBundles(ParserInterface $parser)
     {
         return [
-            BundleConfig::create('Contao\NewsBundle\ContaoNewsBundle')
+            BundleConfig::create('Xuad\BlogBundle\XuadBlogBundle')
                         ->setLoadAfter(['Contao\CoreBundle\ContaoCoreBundle'])
-                        ->setReplace(['news']),
+                        ->setReplace(['xuad_blog']),
         ];
     }
 }

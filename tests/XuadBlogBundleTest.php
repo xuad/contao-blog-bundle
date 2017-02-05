@@ -3,6 +3,7 @@
 namespace Xuad\BlogBundle\Test;
 
 use PHPUnit\Framework\TestCase;
+use PHPUnit_Framework_TestCase;
 use Xuad\BlogBundle\XuadBlogBundle;
 
 /**
@@ -10,7 +11,7 @@ use Xuad\BlogBundle\XuadBlogBundle;
  *
  * @author Patrick Mosch <https://xuad.net>
  */
-class XuadBlogBundleTest extends TestCase
+class XuadBlogBundleTest extends PHPUnit_Framework_TestCase
 {
     public function testObjectInstantiation()
     {

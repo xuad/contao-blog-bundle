@@ -6,6 +6,7 @@ use Contao\CoreBundle\Framework\ContaoFramework;
 use Contao\CoreBundle\Framework\ContaoFrameworkInterface;
 use Contao\CoreBundle\Routing\UrlGenerator;
 use PHPUnit\Framework\TestCase;
+use PHPUnit_Framework_TestCase;
 use Xuad\BlogBundle\Model\NewsArchiveModel;
 use Xuad\BlogBundle\Repository\NewsArchiveRepository;
 use Xuad\BlogBundle\Service\ModuleNewsArchiveService;
@@ -15,7 +16,7 @@ use Xuad\BlogBundle\Service\ModuleNewsArchiveService;
  *
  * @package Xuad\BlogBundle\Test\DependencyInjection
  */
-class ModuleNewsArchiveServiceTest extends TestCase
+class ModuleNewsArchiveServiceTest extends PHPUnit_Framework_TestCase
 {
     public function testInjectActive()
     {

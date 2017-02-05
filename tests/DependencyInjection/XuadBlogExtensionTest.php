@@ -12,7 +12,7 @@ use Xuad\BlogBundle\DependencyInjection\XuadBlogExtension;
  *
  * @package Xuad\BlogBundle\Test\DependencyInjection
  */
-class XuadBlogExtensionTest extends TestCase
+class XuadBlogExtensionTest extends \PHPUnit_Framework_TestCase
 {
     public function testObjectInstantiation()
     {

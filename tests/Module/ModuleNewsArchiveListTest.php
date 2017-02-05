@@ -3,6 +3,7 @@
 namespace Xuad\BlogBundle\Test\Module;
 
 use PHPUnit\Framework\TestCase;
+use PHPUnit_Framework_TestCase;
 use Xuad\BlogBundle\DependencyInjection\Configuration;
 
 /**
@@ -10,6 +11,10 @@ use Xuad\BlogBundle\DependencyInjection\Configuration;
  *
  * @package Xuad\BlogBundle\Test\Module
  */
-class ModuleNewsArchiveListTest extends TestCase
+class ModuleNewsArchiveListTest extends PHPUnit_Framework_TestCase
 {
+    public function testCompile()
+    {
+        $this->markTestSkipped('muh');
+    }
 }
