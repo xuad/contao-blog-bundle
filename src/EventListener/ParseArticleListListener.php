@@ -6,11 +6,6 @@ use Contao\Frontend;
 use Contao\FrontendTemplate;
 use Xuad\BlogBundle\Service\ParseArticleListService;
 
-/**
- * Class ParseArticleListListener
- *
- * @package Xuad\BlogBundle\EventListener
- */
 class ParseArticleListListener extends Frontend
 {
     /** @var ParseArticleListService */
@@ -22,8 +17,8 @@ class ParseArticleListListener extends Frontend
      * @param ParseArticleListService $parseArticleListService
      */
     public function __construct(
-        ParseArticleListService $parseArticleListService)
-    {
+        ParseArticleListService $parseArticleListService
+    ) {
         $this->parseArticleListService = $parseArticleListService;
         parent::__construct();
     }
@@ -31,12 +26,12 @@ class ParseArticleListListener extends Frontend
     /**
      * @param FrontendTemplate $objTemplate
      */
-    public function onParseArticles(FrontendTemplate $objTemplate)
+    public function onParseArticles(FrontendTemplate $objTemplate) : void
     {
         /** @var FrontendTemplate|object $objTemplate */
 
         $dateTimeObject = null;
-        if(!empty($objTemplate->datetime))
+        if (!empty($objTemplate->datetime))
         {
             $dateTimeObject = new \DateTime($objTemplate->datetime);
         }

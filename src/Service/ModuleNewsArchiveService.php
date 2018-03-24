@@ -7,11 +7,6 @@ use Contao\CoreBundle\Routing\UrlGenerator;
 use Xuad\BlogBundle\Model\NewsArchiveModel;
 use Xuad\BlogBundle\Repository\NewsArchiveRepository;
 
-/**
- * Class ModuleNewsArchiveService
- *
- * @package Xuad\BlogBundle\Service
- */
 class ModuleNewsArchiveService
 {
     /** @var ContaoFrameworkInterface */
@@ -33,9 +28,8 @@ class ModuleNewsArchiveService
     public function __construct(
         ContaoFrameworkInterface $framework,
         NewsArchiveRepository $newsArchiveRepository,
-        UrlGenerator $urlGenerator)
-    {
-        $this->framework = $framework;
+        UrlGenerator $urlGenerator
+    ) {
         $this->newsArchiveRepository = $newsArchiveRepository;
         $this->urlGenerator = $urlGenerator;
     }
@@ -43,13 +37,13 @@ class ModuleNewsArchiveService
     /**
      * @return NewsArchiveModel[]
      */
-    public function findNewsArchiveModelList(): array
+    public function findNewsArchiveModelList() : array
     {
         /** @var object $newsArchiveDataList */
         $newsArchiveDataList = $this->newsArchiveRepository->getArchiveObjectList();
 
         $newsCategoryModelList = [];
-        while($newsArchiveDataList->next())
+        while ($newsArchiveDataList->next())
         {
             $newsArchiveModel = new NewsArchiveModel();
             $newsArchiveModel
@@ -69,10 +63,10 @@ class ModuleNewsArchiveService
      *
      * @return array
      */
-    public function getNewsArchiveIdListByNewsArchiveModelList(array $newsArchiveModelList): array
+    public function getNewsArchiveIdListByNewsArchiveModelList(array $newsArchiveModelList) : array
     {
         $idList = [];
-        foreach($newsArchiveModelList as $newsArchiveModel)
+        foreach ($newsArchiveModelList as $newsArchiveModel)
         {
             $idList[] = $newsArchiveModel->getId();
         }
@@ -86,11 +80,11 @@ class ModuleNewsArchiveService
      *
      * @return NewsArchiveModel[]
      */
-    public function getFilteredNewsArchiveModelListByIdList(array $newsArchiveModelList, array $idList): array
+    public function getFilteredNewsArchiveModelListByIdList(array $newsArchiveModelList, array $idList) : array
     {
-        foreach($newsArchiveModelList as $key => $newsArchiveModel)
+        foreach ($newsArchiveModelList as $key => $newsArchiveModel)
         {
-            if(!in_array($newsArchiveModel->getId(), $idList))
+            if (!\in_array($newsArchiveModel->getId(), $idList, true))
             {
                 unset($newsArchiveModelList[$key]);
             }
@@ -106,12 +100,13 @@ class ModuleNewsArchiveService
      *
      * @return NewsArchiveModel[]
      */
-    public function injectUrl(array $newsArchiveModelList, string $pageAlias, string $parameterName): array
+    public function injectUrl(array $newsArchiveModelList, string $pageAlias, string $parameterName) : array
     {
-        foreach($newsArchiveModelList as $newsArchiveModel)
+        foreach ($newsArchiveModelList as $newsArchiveModel)
         {
             $url = $this->urlGenerator->generate(
-                sprintf('%s/%s/%s', $pageAlias, $parameterName, $newsArchiveModel->getAlias()));
+                sprintf('%s/%s/%s', $pageAlias, $parameterName, $newsArchiveModel->getAlias())
+            );
 
             $newsArchiveModel
                 ->setUrl($url);
@@ -126,11 +121,11 @@ class ModuleNewsArchiveService
      *
      * @return NewsArchiveModel[]
      */
-    public function injectActive(array $newsArchiveModelList, $currentArchiveId): array
+    public function injectActive(array $newsArchiveModelList, $currentArchiveId) : array
     {
-        foreach($newsArchiveModelList as $newsArchiveModel)
+        foreach ($newsArchiveModelList as $newsArchiveModel)
         {
-            if($newsArchiveModel->getId() === $currentArchiveId)
+            if ($newsArchiveModel->getId() === $currentArchiveId)
             {
                 $newsArchiveModel
                     ->setActive(true);

@@ -6,11 +6,6 @@ use Contao\Backend;
 use Contao\DataContainer;
 use Xuad\BlogBundle\Service\NewsArchiveBackendService;
 
-/**
- * Class NewsArchiveListener
- *
- * @package Xuad\BlogBundle\EventListener
- */
 class NewsArchiveListener extends Backend
 {
     /** @var NewsArchiveBackendService */
@@ -35,7 +30,7 @@ class NewsArchiveListener extends Backend
      *
      * @return string
      */
-    public function onSaveArchive($value, DataContainer $dataContainer)
+    public function onSaveArchive($value, DataContainer $dataContainer) : string
     {
         return $this->newsArchiveBackendService->getNewAliasByValueAndDataContainer($value, $dataContainer);
     }

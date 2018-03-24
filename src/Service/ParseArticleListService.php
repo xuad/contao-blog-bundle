@@ -4,11 +4,6 @@ namespace Xuad\BlogBundle\Service;
 
 use Xuad\BlogBundle\Repository\NewsArchiveRepository;
 
-/**
- * Class ParseArticleListService
- *
- * @package Xuad\BlogBundle\Service
- */
 class ParseArticleListService
 {
     /** @var NewsArchiveRepository */
@@ -19,8 +14,7 @@ class ParseArticleListService
      *
      * @param NewsArchiveRepository $newsArchiveRepository
      */
-    public function __construct(
-        NewsArchiveRepository $newsArchiveRepository)
+    public function __construct(NewsArchiveRepository $newsArchiveRepository)
     {
         $this->newsArchiveRepository = $newsArchiveRepository;
     }
@@ -30,13 +24,13 @@ class ParseArticleListService
      *
      * @return string
      */
-    public function getArchiveNameById($id): string
+    public function getArchiveNameById($id) : string
     {
         $name = '';
 
-        /** @var object $contaoNewsArchiveModel */
+        /** @var mixed $contaoNewsArchiveModel */
         $contaoNewsArchiveModel = $this->newsArchiveRepository->getById($id);
-        if($contaoNewsArchiveModel !== null)
+        if ($contaoNewsArchiveModel !== null)
         {
             $name = $contaoNewsArchiveModel->title;
         }
@@ -45,14 +39,12 @@ class ParseArticleListService
     }
 
     /**
-     * Parse news text and add automatic images light box
-     *
      * @param int $id
      * @param string $text
      *
      * @return mixed|string
      */
-    public function replaceWithAutomaticLightBox(int $id, string $text): string
+    public function replaceWithAutomaticLightBox(int $id, string $text) : string
     {
         $pattern = "/(<a(?![^>]*?data-lightbox=['\"]multi.*)[^>]*?href=['\"][^'\"]+?\.(?:bmp|gif|jpg|jpeg|png)\?{0,1}\S{0,}['\"][^\>]*)>/i";
         $replacement = '$1 data-lightbox="multi[' . $id . ']">';

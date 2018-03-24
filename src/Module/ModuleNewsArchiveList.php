@@ -2,6 +2,7 @@
 
 namespace Xuad\BlogBundle\Module;
 
+use Contao\CoreBundle\Exception\PageNotFoundException;
 use Contao\Input;
 use Contao\ModuleModel;
 use Contao\ModuleNews;
@@ -10,11 +11,6 @@ use Contao\System;
 use Xuad\BlogBundle\Service\Entity\NewsArchiveEntityService;
 use Xuad\BlogBundle\Service\ModuleNewsArchiveService;
 
-/**
- * Class ModuleNewsArchiveList
- *
- * @package Xuad\BlogBundle\Module
- */
 class ModuleNewsArchiveList extends ModuleNews
 {
     /** @var string */
@@ -34,6 +30,10 @@ class ModuleNewsArchiveList extends ModuleNews
      *
      * @param ModuleModel $objModule
      * @param string $strColumn
+     *
+     * @throws \Symfony\Component\DependencyInjection\Exception\InvalidArgumentException
+     * @throws \Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException
+     * @throws \Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException
      */
     public function __construct(ModuleModel $objModule, $strColumn)
     {
@@ -47,10 +47,12 @@ class ModuleNewsArchiveList extends ModuleNews
             System::getContainer()->getParameter('xuad_blog.news_archive_category_parameter_name');
     }
 
-    protected function compile()
+    /**
+     *
+     * @throws \Contao\CoreBundle\Exception\PageNotFoundException
+     */
+    protected function compile() : void
     {
-        /** @var object $this */
-
         $newsArchiveModelList = $this->moduleNewsArchiveService->findNewsArchiveModelList();
         $archiveIdList = $this->moduleNewsArchiveService->getNewsArchiveIdListByNewsArchiveModelList($newsArchiveModelList);
         $publicIdList = $this->sortOutProtected(deserialize($archiveIdList));
@@ -58,11 +60,15 @@ class ModuleNewsArchiveList extends ModuleNews
             ->getFilteredNewsArchiveModelListByIdList($newsArchiveModelList, $publicIdList);
 
         $pageModelDetails = PageModel::findWithDetails($this->jumpTo);
+        if ($pageModelDetails)
+        {
+            throw new PageNotFoundException('');
+        }
         $newsArchiveModelList = $this->moduleNewsArchiveService
             ->injectUrl($newsArchiveModelList, $pageModelDetails->alias, $this->categoryParameterName);
 
         $newsArchiveId = null;
-        if(Input::get($this->categoryParameterName) !== null)
+        if (Input::get($this->categoryParameterName) !== null)
         {
             $newsArchiveId = $this->newsArchiveEntityService->getNewsArchiveIdByAlias(Input::get($this->categoryParameterName));
         }

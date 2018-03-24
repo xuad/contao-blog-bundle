@@ -5,20 +5,15 @@ namespace Xuad\BlogBundle\Repository;
 use Contao\Database;
 use Contao\NewsArchiveModel;
 
-/**
- * Class NewsArchiveRepository
- *
- * @package Xuad\BlogBundle\Repository
- */
 class NewsArchiveRepository
 {
     /**
-     * @return Database\Result
+     * @return Database\Result|mixed
      */
     public function getArchiveObjectList()
     {
-        $query = '
-            SELECT
+        $query = /** @lang */
+            'SELECT
                 na.id AS newsArchiveId,
                 na.title,
                 na.alias,
@@ -32,9 +27,7 @@ class NewsArchiveRepository
             GROUP BY na.id
             ORDER BY na.title ASC';
 
-        $resultList = Database::getInstance()->prepare($query)->execute(true);
-
-        return $resultList;
+        return Database::getInstance()->prepare($query)->execute(true);
     }
 
     /**
@@ -42,7 +35,7 @@ class NewsArchiveRepository
      *
      * @return NewsArchiveModel|null
      */
-    public function getById(int $id): NewsArchiveModel
+    public function getById(int $id) : NewsArchiveModel
     {
         return NewsArchiveModel::findById($id);
     }
@@ -52,7 +45,7 @@ class NewsArchiveRepository
      *
      * @return NewsArchiveModel|null
      */
-    public function getByAlias(string $alias): NewsArchiveModel
+    public function getByAlias(string $alias) : NewsArchiveModel
     {
         return NewsArchiveModel::findByIdOrAlias($alias);
     }
@@ -60,18 +53,17 @@ class NewsArchiveRepository
     /**
      * @param string $alias
      *
-     * @return Database\Result|object
+     * @return Database\Result|mixed
      */
     public function getListByAlias(string $alias)
     {
-        $query = 'SELECT
+        $query = /** @lang */
+            'SELECT
                     id
                   FROM
                     tl_news_archive
                   WHERE alias=?';
 
-        $resultList = Database::getInstance()->prepare($query)->execute($alias);
-
-        return $resultList;
+        return Database::getInstance()->prepare($query)->execute($alias);
     }
 }

@@ -4,11 +4,6 @@ namespace Xuad\BlogBundle\Service;
 
 use Xuad\BlogBundle\Repository\NewsArchiveRepository;
 
-/**
- * Class ModuleNewsListService
- *
- * @package Xuad\BlogBundle\Service
- */
 class ModuleNewsListService
 {
     /** @var NewsArchiveRepository */
@@ -19,8 +14,7 @@ class ModuleNewsListService
      *
      * @param NewsArchiveRepository $newsArchiveRepository
      */
-    public function __construct(
-        NewsArchiveRepository $newsArchiveRepository)
+    public function __construct(NewsArchiveRepository $newsArchiveRepository)
     {
         $this->newsArchiveRepository = $newsArchiveRepository;
     }
@@ -30,12 +24,12 @@ class ModuleNewsListService
      *
      * @return int
      */
-    public function getNewsArchiveIdByAlias(string $alias): int
+    public function getNewsArchiveIdByAlias(string $alias) : int
     {
         $id = null;
         $newsArchive = $this->newsArchiveRepository->getByAlias($alias);
 
-        if($newsArchive !== null)
+        if ($newsArchive !== null)
         {
             $id = $newsArchive->id;
         }

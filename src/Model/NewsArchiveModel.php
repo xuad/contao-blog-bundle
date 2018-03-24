@@ -2,11 +2,6 @@
 
 namespace Xuad\BlogBundle\Model;
 
-/**
- * Class NewsArchiveModel
- *
- * @package Xuad\BlogBundle\Model
- */
 class NewsArchiveModel
 {
     /** @var int */
@@ -30,7 +25,7 @@ class NewsArchiveModel
     /**
      * @return bool
      */
-    public function isActive(): bool
+    public function isActive() : bool
     {
         return $this->active;
     }
@@ -40,7 +35,7 @@ class NewsArchiveModel
      *
      * @return $this
      */
-    public function setActive(bool $active)
+    public function setActive(bool $active) : NewsArchiveModel
     {
         $this->active = $active;
 
@@ -50,7 +45,7 @@ class NewsArchiveModel
     /**
      * @return string
      */
-    public function getAlias(): string
+    public function getAlias() : string
     {
         return $this->alias;
     }
@@ -60,7 +55,7 @@ class NewsArchiveModel
      *
      * @return $this
      */
-    public function setAlias(string $alias)
+    public function setAlias(string $alias) : NewsArchiveModel
     {
         $this->alias = $alias;
 
@@ -70,7 +65,7 @@ class NewsArchiveModel
     /**
      * @return int
      */
-    public function getId(): int
+    public function getId() : int
     {
         return $this->id;
     }
@@ -80,7 +75,7 @@ class NewsArchiveModel
      *
      * @return $this
      */
-    public function setId(int $id)
+    public function setId(int $id) : NewsArchiveModel
     {
         $this->id = $id;
 
@@ -90,7 +85,7 @@ class NewsArchiveModel
     /**
      * @return string
      */
-    public function getTitle(): string
+    public function getTitle() : string
     {
         return $this->title;
     }
@@ -100,7 +95,7 @@ class NewsArchiveModel
      *
      * @return $this
      */
-    public function setTitle(string $title)
+    public function setTitle(string $title) : NewsArchiveModel
     {
         $this->title = $title;
 
@@ -110,7 +105,7 @@ class NewsArchiveModel
     /**
      * @return int
      */
-    public function getNumberOfNews(): int
+    public function getNumberOfNews() : int
     {
         return $this->numberOfNews;
     }
@@ -120,7 +115,7 @@ class NewsArchiveModel
      *
      * @return $this
      */
-    public function setNumberOfNews(int $numberOfNews)
+    public function setNumberOfNews(int $numberOfNews) : NewsArchiveModel
     {
         $this->numberOfNews = $numberOfNews;
 
@@ -130,7 +125,7 @@ class NewsArchiveModel
     /**
      * @return string
      */
-    public function getUrl(): string
+    public function getUrl() : string
     {
         return $this->url;
     }
@@ -140,7 +135,7 @@ class NewsArchiveModel
      *
      * @return $this
      */
-    public function setUrl(string $url)
+    public function setUrl(string $url) : NewsArchiveModel
     {
         $this->url = $url;
 

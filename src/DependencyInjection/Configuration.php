@@ -12,7 +12,11 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
  */
 class Configuration implements ConfigurationInterface
 {
-    public function getConfigTreeBuilder()
+    /**
+     * @return \Symfony\Component\Config\Definition\Builder\TreeBuilder
+     * @throws \RuntimeException
+     */
+    public function getConfigTreeBuilder() : TreeBuilder
     {
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('xuad_blog');
@@ -20,12 +24,12 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
             ->booleanNode('enabled')
-                ->defaultFalse()
+            ->defaultFalse()
             ->end()
             ->scalarNode('news_archive_category_parameter_name')
-                ->cannotBeEmpty()
+            ->cannotBeEmpty()
             ->end()
-        ->end();
+            ->end();
 
         return $treeBuilder;
     }

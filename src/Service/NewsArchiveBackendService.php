@@ -6,11 +6,6 @@ use Contao\DataContainer;
 use Contao\StringUtil;
 use Xuad\BlogBundle\Repository\NewsArchiveRepository;
 
-/**
- * Class NewsArchiveBackendService
- *
- * @package Xuad\BlogBundle\Service
- */
 class NewsArchiveBackendService
 {
     /** @var NewsArchiveRepository */
@@ -31,24 +26,28 @@ class NewsArchiveBackendService
      * @param DataContainer $dataContainer
      *
      * @return string
+     * @throws \LogicException
      */
-    public function getNewAliasByValueAndDataContainer(string $alias, DataContainer $dataContainer): string
+    public function getNewAliasByValueAndDataContainer(string $alias, DataContainer $dataContainer) : string
     {
         $autoAlias = false;
-        if(empty($alias))
+        if (empty($alias))
         {
             $autoAlias = true;
-            $alias = standardize(StringUtil::restoreBasicEntities(
-                $dataContainer->activeRecord->title));
+            $alias = standardize(
+                StringUtil::restoreBasicEntities(
+                    $dataContainer->activeRecord->title
+                )
+            );
         }
 
         $newsArchiveList = $this->getNewsArchiveIdListByAlias($alias);
-        if(count($newsArchiveList) > 1 && !$autoAlias)
+        if (!$autoAlias && \count($newsArchiveList) > 1)
         {
-            throw new \LogicException();
+            throw new \LogicException('');
         }
 
-        if(!empty($newsArchiveList) && $autoAlias)
+        if (!empty($newsArchiveList) && $autoAlias)
         {
             $alias .= '-' . $dataContainer->id;
         }
@@ -61,12 +60,12 @@ class NewsArchiveBackendService
      *
      * @return array
      */
-    private function getNewsArchiveIdListByAlias(string $alias): array
+    private function getNewsArchiveIdListByAlias(string $alias) : array
     {
         $idList = [];
 
         $resultList = $this->newsArchiveRepository->getListByAlias($alias);
-        while($resultList->next())
+        while ($resultList->next())
         {
             $idList[$resultList->id] = $resultList->id;
         }

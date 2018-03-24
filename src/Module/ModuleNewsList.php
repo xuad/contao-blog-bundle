@@ -8,11 +8,6 @@ use Contao\ModuleNewsList as ContaoModuleNewsList;
 use Contao\System;
 use Xuad\BlogBundle\Service\ModuleNewsListService;
 
-/**
- * ModuleNewsList
- *
- * @author Patrick Mosch <https://xuad.net>
- */
 class ModuleNewsList extends ContaoModuleNewsList
 {
     /** @var ModuleNewsListService */
@@ -26,6 +21,8 @@ class ModuleNewsList extends ContaoModuleNewsList
      *
      * @param ModuleModel $objModule
      * @param string $strColumn
+     *
+     * @throws \Symfony\Component\DependencyInjection\Exception\InvalidArgumentException
      */
     public function __construct(ModuleModel $objModule, $strColumn)
     {
@@ -39,26 +36,21 @@ class ModuleNewsList extends ContaoModuleNewsList
         $this->filterNewsArchives($objModule);
     }
 
-    protected function compile()
-    {
-        parent::compile();
-    }
-
     /**
      * @param ModuleModel $objModule
      */
-    protected function filterNewsArchives(ModuleModel $objModule)
+    protected function filterNewsArchives(ModuleModel $objModule) : void
     {
         $newsArchiveAlias = Input::get($this->categoryParameterName);
 
         /** @var object $objModule */
-        if(!$objModule->sortNewsList || $newsArchiveAlias === null)
+        if (!$objModule->sortNewsList || $newsArchiveAlias === null)
         {
             return;
         }
 
         $archiveId = $this->moduleNewsListService->getNewsArchiveIdByAlias($newsArchiveAlias);
-        if($archiveId !== null)
+        if ($archiveId !== null)
         {
             $this->news_archives = [0 => $archiveId];
         }
