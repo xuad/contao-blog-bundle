@@ -60,7 +60,7 @@ class ModuleNewsArchiveList extends ModuleNews
             ->getFilteredNewsArchiveModelListByIdList($newsArchiveModelList, $publicIdList);
 
         $pageModelDetails = PageModel::findWithDetails($this->jumpTo);
-        if ($pageModelDetails)
+        if (!$pageModelDetails)
         {
             throw new PageNotFoundException('');
         }
