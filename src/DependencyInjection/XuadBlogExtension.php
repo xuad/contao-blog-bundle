@@ -7,11 +7,6 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
-/**
- * Class XuadBlogExtension
- *
- * @package Xuad\BlogBundle\DependencyInjection
- */
 class XuadBlogExtension extends Extension
 {
     /** @var array */
@@ -24,6 +19,8 @@ class XuadBlogExtension extends Extension
     /**
      * @param array $configs
      * @param ContainerBuilder $container
+     *
+     * @throws \Exception
      */
     public function load(array $configs, ContainerBuilder $container) : void
     {

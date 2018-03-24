@@ -28,7 +28,7 @@ class ParseArticleListListener extends Frontend
      */
     public function onParseArticles(FrontendTemplate $objTemplate) : void
     {
-        /** @var FrontendTemplate|object $objTemplate */
+        /** @var FrontendTemplate|mixed $objTemplate */
 
         $dateTimeObject = null;
         if (!empty($objTemplate->datetime))

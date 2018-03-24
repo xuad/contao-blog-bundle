@@ -84,7 +84,7 @@ class ModuleNewsArchiveService
     {
         foreach ($newsArchiveModelList as $key => $newsArchiveModel)
         {
-            if (!\in_array($newsArchiveModel->getId(), $idList, true))
+            if (!$this->checkIsIIdInList($newsArchiveModel->getId(), $idList))
             {
                 unset($newsArchiveModelList[$key]);
             }
@@ -133,5 +133,26 @@ class ModuleNewsArchiveService
         }
 
         return $newsArchiveModelList;
+    }
+
+    /**
+     * @param int $id
+     * @param array $idList
+     *
+     * @return bool
+     */
+    private function checkIsIIdInList(int $id, array $idList) : bool
+    {
+        $isInList = false;
+        foreach ($idList as $checkId)
+        {
+            if ($id === (int)$checkId)
+            {
+                $isInList = true;
+                break;
+            }
+        }
+
+        return $isInList;
     }
 }

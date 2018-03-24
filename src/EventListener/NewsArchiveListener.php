@@ -29,6 +29,7 @@ class NewsArchiveListener extends Backend
      * @param DataContainer $dataContainer
      *
      * @return string
+     * @throws \LogicException
      */
     public function onSaveArchive($value, DataContainer $dataContainer) : string
     {
