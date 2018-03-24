@@ -3,7 +3,6 @@
 namespace Xuad\BlogBundle\Test;
 
 use PHPUnit\Framework\TestCase;
-use PHPUnit_Framework_TestCase;
 use Xuad\BlogBundle\XuadBlogBundle;
 
 /**
@@ -11,12 +10,12 @@ use Xuad\BlogBundle\XuadBlogBundle;
  *
  * @author Patrick Mosch <https://xuad.net>
  */
-class XuadBlogBundleTest extends PHPUnit_Framework_TestCase
+class XuadBlogBundleTest extends TestCase
 {
-    public function testObjectInstantiation()
+    public function testObjectInstantiation() : void
     {
         $bundle = new XuadBlogBundle();
 
-        $this->assertInstanceOf('Xuad\BlogBundle\XuadBlogBundle', $bundle);
+        $this->assertInstanceOf(XuadBlogBundle::class, $bundle);
     }
 }

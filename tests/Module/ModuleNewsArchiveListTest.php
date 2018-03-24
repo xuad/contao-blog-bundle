@@ -11,10 +11,10 @@ use Xuad\BlogBundle\DependencyInjection\Configuration;
  *
  * @package Xuad\BlogBundle\Test\Module
  */
-class ModuleNewsArchiveListTest extends PHPUnit_Framework_TestCase
+class ModuleNewsArchiveListTest extends TestCase
 {
-    public function testCompile()
+    public function testCompile() : void
     {
-        $this->markTestSkipped('muh');
+        $this->markTestSkipped('skip');
     }
 }

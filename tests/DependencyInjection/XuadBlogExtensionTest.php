@@ -12,16 +12,16 @@ use Xuad\BlogBundle\DependencyInjection\XuadBlogExtension;
  *
  * @package Xuad\BlogBundle\Test\DependencyInjection
  */
-class XuadBlogExtensionTest extends \PHPUnit_Framework_TestCase
+class XuadBlogExtensionTest extends TestCase
 {
-    public function testObjectInstantiation()
+    public function testObjectInstantiation() : void
     {
         $extension = new XuadBlogExtension();
 
-        $this->assertInstanceOf('Xuad\BlogBundle\DependencyInjection\XuadBlogExtension', $extension);
+        $this->assertInstanceOf(XuadBlogExtension::class, $extension);
     }
 
-    public function testLoad()
+    public function testLoad() : void
     {
         $container = new ContainerBuilder(new ParameterBag(['kernel.debug' => false]));
 

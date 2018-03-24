@@ -6,7 +6,6 @@ use Contao\CoreBundle\Framework\ContaoFramework;
 use Contao\CoreBundle\Framework\ContaoFrameworkInterface;
 use Contao\CoreBundle\Routing\UrlGenerator;
 use PHPUnit\Framework\TestCase;
-use PHPUnit_Framework_TestCase;
 use Xuad\BlogBundle\Model\NewsArchiveModel;
 use Xuad\BlogBundle\Repository\NewsArchiveRepository;
 use Xuad\BlogBundle\Service\ModuleNewsArchiveService;
@@ -16,20 +15,20 @@ use Xuad\BlogBundle\Service\ModuleNewsArchiveService;
  *
  * @package Xuad\BlogBundle\Test\DependencyInjection
  */
-class ModuleNewsArchiveServiceTest extends PHPUnit_Framework_TestCase
+class ModuleNewsArchiveServiceTest extends TestCase
 {
-    public function testInjectActive()
+    public function testInjectActive() : void
     {
         /** @var NewsArchiveRepository $newsArchiveRepository */
         $newsArchiveRepository = $this
-            ->getMockBuilder('Xuad\BlogBundle\Repository\NewsArchiveRepository')
+            ->getMockBuilder(NewsArchiveRepository::class)
             ->disableOriginalConstructor()
             ->setMethods(['getArchiveObjectList'])
             ->getMock();
 
         /** @var UrlGenerator $urlGenerator */
         $urlGenerator = $this
-            ->getMockBuilder('Contao\CoreBundle\Routing\UrlGenerator')
+            ->getMockBuilder(UrlGenerator::class)
             ->disableOriginalConstructor()
             ->getMock();
 
@@ -55,11 +54,11 @@ class ModuleNewsArchiveServiceTest extends PHPUnit_Framework_TestCase
      *
      * @return ContaoFrameworkInterface
      */
-    private function mockContaoFramework($noModels = false)
+    private function mockContaoFramework($noModels = false) : ContaoFrameworkInterface
     {
         /** @var ContaoFramework|\PHPUnit_Framework_MockObject_MockObject $framework */
         $framework = $this
-            ->getMockBuilder('Contao\CoreBundle\Framework\ContaoFramework')
+            ->getMockBuilder(ContaoFramework::class)
             ->disableOriginalConstructor()
             ->setMethods(['isInitialized', 'getAdapter'])
             ->getMock();
