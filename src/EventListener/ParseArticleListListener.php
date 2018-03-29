@@ -16,9 +16,8 @@ class ParseArticleListListener extends Frontend
      *
      * @param ParseArticleListService $parseArticleListService
      */
-    public function __construct(
-        ParseArticleListService $parseArticleListService
-    ) {
+    public function __construct(ParseArticleListService $parseArticleListService)
+    {
         $this->parseArticleListService = $parseArticleListService;
         parent::__construct();
     }

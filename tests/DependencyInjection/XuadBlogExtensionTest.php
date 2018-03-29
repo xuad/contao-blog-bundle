@@ -7,11 +7,6 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
 use Xuad\BlogBundle\DependencyInjection\XuadBlogExtension;
 
-/**
- * Class XuadBlogExtensionTest
- *
- * @package Xuad\BlogBundle\Test\DependencyInjection
- */
 class XuadBlogExtensionTest extends TestCase
 {
     public function testObjectInstantiation() : void
@@ -21,6 +16,9 @@ class XuadBlogExtensionTest extends TestCase
         $this->assertInstanceOf(XuadBlogExtension::class, $extension);
     }
 
+    /**
+     * @throws \Exception
+     */
     public function testLoad() : void
     {
         $container = new ContainerBuilder(new ParameterBag(['kernel.debug' => false]));

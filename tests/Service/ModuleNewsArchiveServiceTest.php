@@ -10,11 +10,6 @@ use Xuad\BlogBundle\Model\NewsArchiveModel;
 use Xuad\BlogBundle\Repository\NewsArchiveRepository;
 use Xuad\BlogBundle\Service\ModuleNewsArchiveService;
 
-/**
- * Class ModuleNewsArchiveServiceTest
- *
- * @package Xuad\BlogBundle\Test\DependencyInjection
- */
 class ModuleNewsArchiveServiceTest extends TestCase
 {
     public function testInjectActive() : void

@@ -4,11 +4,6 @@ namespace Xuad\BlogBundle\Service\Entity;
 
 use Xuad\BlogBundle\Repository\NewsArchiveRepository;
 
-/**
- * NewsArchiveEntityService
- *
- * @author Patrick Mosch <https://xuad.net>
- */
 class NewsArchiveEntityService
 {
     /** @var NewsArchiveRepository */

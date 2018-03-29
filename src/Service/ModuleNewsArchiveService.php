@@ -2,16 +2,12 @@
 
 namespace Xuad\BlogBundle\Service;
 
-use Contao\CoreBundle\Framework\ContaoFrameworkInterface;
 use Contao\CoreBundle\Routing\UrlGenerator;
 use Xuad\BlogBundle\Model\NewsArchiveModel;
 use Xuad\BlogBundle\Repository\NewsArchiveRepository;
 
 class ModuleNewsArchiveService
 {
-    /** @var ContaoFrameworkInterface */
-    private $framework;
-
     /** @var NewsArchiveRepository */
     private $newsArchiveRepository;
 
@@ -21,12 +17,10 @@ class ModuleNewsArchiveService
     /**
      * NewsArchiveService constructor.
      *
-     * @param ContaoFrameworkInterface $framework
      * @param NewsArchiveRepository $newsArchiveRepository
      * @param UrlGenerator $urlGenerator
      */
     public function __construct(
-        ContaoFrameworkInterface $framework,
         NewsArchiveRepository $newsArchiveRepository,
         UrlGenerator $urlGenerator
     ) {

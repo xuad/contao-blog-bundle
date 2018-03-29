@@ -4,7 +4,6 @@ services:
   xuad_blog.service.module_news_archive_service:
     class: Xuad\BlogBundle\Service\ModuleNewsArchiveService
     arguments:
-      - "@contao.framework"
       - "@xuad_blog.repository.news_archive_repository"
       - "@contao.routing.url_generator"
   xuad_blog.service.parse_article_list_service:
