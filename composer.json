@@ -52,5 +52,10 @@
     },
     "extra": {
         "contao-manager-plugin": "Xuad\\BlogBundle\\ContaoManager\\Plugin"
+    },
+    "support": {
+        "issues": "https://git.xuad.de/xuad/contao-blog-bundle/issues",
+        "source": "https://git.xuad.de/xuad/contao-blog-bundle.git",
+        "docs": "https://git.xuad.de/xuad/contao-blog-bundle/wiki/_pages"
     }
 }
