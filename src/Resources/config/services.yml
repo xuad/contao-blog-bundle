@@ -1,26 +1,32 @@
 services:
   xuad_blog.repository.news_archive_repository:
     class: Xuad\BlogBundle\Repository\NewsArchiveRepository
+    public: true
   xuad_blog.service.module_news_archive_service:
     class: Xuad\BlogBundle\Service\ModuleNewsArchiveService
+    public: true
     arguments:
       - "@xuad_blog.repository.news_archive_repository"
       - "@contao.routing.url_generator"
   xuad_blog.service.parse_article_list_service:
     class: Xuad\BlogBundle\Service\ParseArticleListService
+    public: true
     arguments:
       - "@xuad_blog.repository.news_archive_repository"
   xuad_blog.service.module_news_list_service:
     class: Xuad\BlogBundle\Service\ModuleNewsListService
+    public: true
     arguments:
       - "@xuad_blog.repository.news_archive_repository"
   xuad_blog.service.news_archive_backend_service:
     class: Xuad\BlogBundle\Service\NewsArchiveBackendService
+    public: true
     arguments:
       - "@xuad_blog.repository.news_archive_repository"
 
-# Entity service
+  # Entity service
   xuad_blog.service.entity.news_archive_entity_service:
     class: Xuad\BlogBundle\Service\Entity\NewsArchiveEntityService
+    public: true
     arguments:
       - "@xuad_blog.repository.news_archive_repository"
