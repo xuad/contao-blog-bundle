@@ -1,9 +1,11 @@
 services:
   xuad_blog.listener.parse_article_list:
     class: Xuad\BlogBundle\EventListener\ParseArticleListListener
+    public: true
     arguments:
     - "@xuad_blog.service.parse_article_list_service"
   xuad_blog.listener.news_archive:
     class: Xuad\BlogBundle\EventListener\NewsArchiveListener
+    public: true
     arguments:
     - "@xuad_blog.service.news_archive_backend_service"
