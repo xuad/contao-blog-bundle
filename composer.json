@@ -11,7 +11,7 @@
     ],
     "require": {
         "php": "^7.2",
-        "contao/core-bundle": "^4.9",
+        "contao/core-bundle": "^4.8",
         "friendsofsymfony/http-cache": "^2.4",
         "patchwork/utf8": "^1.2",
         "symfony/config": "4.4.*",
@@ -19,7 +19,7 @@
         "symfony/http-foundation": "4.4.*",
         "symfony/http-kernel": "4.4.*",
         "symfony/yaml": "4.4.*",
-        "contao/news-bundle": "^4.9"
+        "contao/news-bundle": "^4.8"
     },
     "conflict": {
         "contao/core": "*",
