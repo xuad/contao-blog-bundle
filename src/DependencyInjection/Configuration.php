@@ -2,19 +2,20 @@
 
 namespace Xuad\BlogBundle\DependencyInjection;
 
+use RuntimeException;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 class Configuration implements ConfigurationInterface
 {
     /**
-     * @return \Symfony\Component\Config\Definition\Builder\TreeBuilder
-     * @throws \RuntimeException
+     * @return TreeBuilder
+     * @throws RuntimeException
      */
     public function getConfigTreeBuilder() : TreeBuilder
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('xuad_blog');
+        $treeBuilder = new TreeBuilder('xuad_blog');
+        $rootNode = $treeBuilder->getRootNode();
 
         $rootNode
             ->children()
